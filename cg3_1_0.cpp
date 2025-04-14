@@ -1,7 +1,6 @@
 /*
-창의 크기가 변경되어도 도형의 크기는 그대로 유지하도록 하기.
+Vertex예제. 점찍기
 */
-
 #include <GL/glut.h>
 #include <stdio.h>
 #include <iostream>
@@ -12,7 +11,11 @@ void RenderScene(void) {
 	glClear(GL_COLOR_BUFFER_BIT);
 
 	glColor3f(1.0f, 0.0f, 0.0f);
-    glRectf(-25.0f, 25.0f, 25.0f, -25.0f);
+	//glRectf(-25.0f, 25.0f, 25.0f, -25.0f);
+	glBegin(GL_POINTS);
+		glVertex3f(0.0f, 0.0f, 0.0f);
+		glVertex3f(50.0f, 50.0f, 50.0f);
+	glEnd();
 
 	glFlush();
 }
@@ -30,8 +33,8 @@ void ChangeSize(GLsizei w, GLsizei h){
 	GLint wSize = 100;
 	GLfloat aspectRatio;
 	aspectRatio = (GLfloat)w / (GLfloat)h;
-	if(w<=h) glOrtho(-wSize, wSize, -wSize/aspectRatio, wSize/aspectRatio, 1, -1);
-	else glOrtho(-wSize*aspectRatio, wSize*aspectRatio, -wSize, wSize, 1, -1);
+	if(w<=h) glOrtho(-wSize, wSize, -wSize/aspectRatio, wSize/aspectRatio, 1, -50);
+	else glOrtho(-wSize*aspectRatio, wSize*aspectRatio, -wSize, wSize, 1, -50);
 	
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
@@ -39,7 +42,7 @@ void ChangeSize(GLsizei w, GLsizei h){
 
 void SetupRC(void) {
 	std::cout << "SetupRC" << std::endl;
-	glClearColor(0.0f, 0.0f, 1.0f, 0.0f);
+	glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
 }
 
 int main(int argc, char** argv) {

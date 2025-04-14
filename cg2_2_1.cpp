@@ -1,4 +1,5 @@
 /*
+rect예제. 사각형 도형 그리기
 fixed - glutInitWindowSize(640, 480)
       - glViewport(0, 0, 640, 480)
       - glRectf(0, 240, 320, 0)

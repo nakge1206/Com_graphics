@@ -1,3 +1,8 @@
+/*
+z축에 따라 원을 3번 그리는 예제
+3_1_4 에서 색상만 랜덤하게 변경되게
+*/
+
 #include <GL/glut.h>
 #include <stdio.h>
 #include <iostream>

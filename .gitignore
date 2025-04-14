@@ -1,0 +1,9 @@
+# macOS
+.DS_Store
+
+#c/c++ 환경설정
+.vscode
+
+#실행에서 생기는 파일들
+*.out
+*.out.dSYM

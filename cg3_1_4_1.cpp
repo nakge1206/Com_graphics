@@ -1,8 +1,11 @@
+/*
+z축에 따라 원을 3번 그리는 예제
+3_1_2 점의 크기가 점점 커지는 나선형 출력하기
+*/
+
 #include <GL/glut.h>
 #include <stdio.h>
 #include <iostream>
-
-#include <cstdlib> //랜덤
 
 #define GL_PI 3.1415f
 
@@ -27,9 +30,6 @@ void RenderScene(void) {
 	GLfloat curSize = sizes[0];
 	GLfloat maxSize = sizes[1];
 
-	GLfloat r, g, b;
-	r = 0.0f; g = 0.0f; b = 0.0f;
-
 	z = -50.0f;
 	for(angle = 0.0f; angle <= (2.0f * GL_PI) * 3.0f; angle += 0.1f){ //3바퀴 돌리는거
 		if(isFirst){ //맨 처음 점이라면 흰색점으로 표시
@@ -38,15 +38,7 @@ void RenderScene(void) {
 		} else glColor3f(1.0f, 0.0f, 0.0f);
 		x = 50.0f * cos(angle);
 		y = 50.0f * sin(angle);
-
-		// r = (sin(angle * 0.3f) + 1.0f) / 2.0f;
-		// g = (sin(angle * 0.5f + 1.0f) + 1.0f) / 2.0f;
-		// b = (sin(angle * 0.7f + 2.0f) + 1.0f) / 2.0f;
-		r = static_cast<float>(rand()) / RAND_MAX;
-		g = static_cast<float>(rand()) / RAND_MAX;
-		b = static_cast<float>(rand()) / RAND_MAX;
 		
-		glColor3f(r, g, b);
 		glBegin(GL_POINTS);
 			glVertex3f(x, y, z);
 		glEnd();
