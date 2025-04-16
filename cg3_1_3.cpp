@@ -21,16 +21,10 @@ void RenderScene(void) {
 	glRotatef(45, 0.0f, 1.0f, 0.0f);
 	
 	GLfloat x, y, z, angle;
-	bool isFirst = true;
 	glPointSize(4.0f);
 	glBegin(GL_POINTS);
 		z = -50.0f;
-		
 		for(angle = 0.0f; angle <= (2.0f * GL_PI) * 3.0f; angle += 0.1f){ //3바퀴 돌리는거
-			if(isFirst){ //맨 처음 점이라면 흰색점으로 표시
-				glColor3f(1.0f, 1.0f, 1.0f); 
-				isFirst = false;
-			} else glColor3f(1.0f, 0.0f, 0.0f);
 			x = 50.0f * cos(angle);
 			y = 50.0f * sin(angle);
 			glVertex3f(x, y, z);

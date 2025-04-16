@@ -1,3 +1,7 @@
+/*
+가로, 세로로 굵기가 다른 선을 여러개 긋는 예제
+*/
+
 #include <GL/glut.h>
 #include <stdio.h>
 #include <iostream>
@@ -6,49 +10,34 @@ void RenderScene(void) {
 	std::cout << "RenderScene" << std::endl;
 
 	glClear(GL_COLOR_BUFFER_BIT);
+	glColor3f(1.0f, 0.0f, 0.0f);
 
-	glPushMatrix();
-	glRotatef(45, 1.0f, 0.0f, 0.0f);
-	glRotatef(45, 0.0f, 1.0f, 0.0f);
+	GLfloat sizes[2];
+	GLfloat step;
+	GLfloat curSize = 1.0f;
 
-	glBegin(GL_LINES); //r
-		glColor3f(1.0f, 0.0f, 0.0f);
-		glVertex3f(0.0f, 0.0f, 0.0f);
-		glVertex3f(80.0f, 0.0f, 0.0f);
+	glGetFloatv(GL_LINE_WIDTH_RANGE, sizes);
+	//glGetFloatv(GL_LINE_WIDTH_GRANULARITY, &step);
+	step = 2.0f;
 
-		glVertex3f(80.0f, 0.0f, 0.0f);
-		glVertex3f(75.0f, 5.0f, 0.0f);
+	for(int i=-90; i<=90; i+=20){
+		glLineWidth(curSize);
+		glBegin(GL_LINES);
+			glVertex3f(80, i, 0);
+			glVertex3f(-80, i, 0);
+		glEnd();
+		curSize += step;
+	}
 
-		glVertex3f(80.0f, 0.0f, 0.0f);
-		glVertex3f(75.0f, -5.0f, 0.0f);
-	glEnd();
-
-	glBegin(GL_LINES); //g
-		glColor3f(0.0f, 1.0f, 0.0f);
-		glVertex3f(0.0f, 0.0f, 0.0f);
-		glVertex3f(0.0f, 80.0f, 0.0f);
-
-		glVertex3f(0.0f, 80.0f, 0.0f);
-		glVertex3f(5.0f, 75.0f, 0.0f);
-
-		glVertex3f(0.0f, 80.0f, 0.0f);
-		glVertex3f(-5.0f, 75.0f, 0.0f);
-	glEnd();
-
-	glBegin(GL_LINES); //b
-		glColor3f(0.0f, 0.0f, 1.0f);
-		glVertex3f(0.0f, 0.0f, 0.0f);
-		glVertex3f(0.0f, 0.0f, 80.0f);
-
-		glVertex3f(0.0f, 0.0f, 80.0f);
-		glVertex3f(5.0f, 0.0f, 75.0f);
-
-		glVertex3f(0.0f, 0.0f, 80.0f);
-		glVertex3f(-5.0f, 0.0f, 75.0f);
-	glEnd();
-
-
-	glPopMatrix();
+	// for(int i=-3; i<=3; i++){
+	// 	glLineWidth(curSize);
+	// 	glBegin(GL_LINES);
+	// 		glVertex3f(i*20, 80, 0);
+	// 		glVertex3f(i*20, -80, 0);
+	// 	glEnd();
+	// 	curSize += step;
+	// }
+	
 	glFlush();
 }
 

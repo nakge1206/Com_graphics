@@ -22,18 +22,12 @@ void RenderScene(void) {
 	
 
 	GLfloat x, y, z, angle;
-	bool isFirst = true;
 	GLfloat rectSize = 1.5f;
 	
 	glBegin(GL_POINTS);
-		//glRectf(-10.0f, 10.0f, 10.0f, -10.0f);
 		z = -50.0f;
 		
 		for(angle = 0.0f; angle <= (2.0f * GL_PI) * 3.0f; angle += 0.1f){ //3바퀴 돌리는거
-			if(isFirst){
-				glColor3f(1.0f, 1.0f, 1.0f); 
-				isFirst = false;
-			} else glColor3f(1.0f, 0.0f, 0.0f);
 			x = 50.0f * cos(angle);
 			y = 50.0f * sin(angle);
 			for(GLfloat i = 0.00f; i <= rectSize; i+=0.01){
@@ -46,7 +40,6 @@ void RenderScene(void) {
 				glVertex3f(x+i, y-rectSize, z);
 				glVertex3f(x-i, y-rectSize, z);
 			}
-			//glRectf(x-3.0f, y+3.0f, x+3.0f, y-3.0f);
 			z += 0.5f;
 		}
 	glEnd();

@@ -1,54 +1,37 @@
+/*
+3_1_2와 매우 비슷하지만 점들을 선으로 잇는 예제
+*/
+
 #include <GL/glut.h>
 #include <stdio.h>
 #include <iostream>
+
+#define GL_PI 3.1415f
 
 void RenderScene(void) {
 	std::cout << "RenderScene" << std::endl;
 
 	glClear(GL_COLOR_BUFFER_BIT);
 
+	glColor3f(1.0f, 0.0f, 0.0f);
+
 	glPushMatrix();
 	glRotatef(45, 1.0f, 0.0f, 0.0f);
 	glRotatef(45, 0.0f, 1.0f, 0.0f);
-
-	glBegin(GL_LINES); //r
-		glColor3f(1.0f, 0.0f, 0.0f);
-		glVertex3f(0.0f, 0.0f, 0.0f);
-		glVertex3f(80.0f, 0.0f, 0.0f);
-
-		glVertex3f(80.0f, 0.0f, 0.0f);
-		glVertex3f(75.0f, 5.0f, 0.0f);
-
-		glVertex3f(80.0f, 0.0f, 0.0f);
-		glVertex3f(75.0f, -5.0f, 0.0f);
+	
+	GLfloat x, y, z, angle;
+	glBegin(GL_LINE_STRIP);
+		z = -50.0f;
+		for(angle = 0.0f; angle <= (2.0f * GL_PI) * 3.0f; angle += 0.1f){ //3바퀴 돌리는거
+			x = 50.0f * cos(angle);
+			y = 50.0f * sin(angle);
+			glVertex3f(x, y, z);
+			z += 0.5f;
+		}
 	glEnd();
-
-	glBegin(GL_LINES); //g
-		glColor3f(0.0f, 1.0f, 0.0f);
-		glVertex3f(0.0f, 0.0f, 0.0f);
-		glVertex3f(0.0f, 80.0f, 0.0f);
-
-		glVertex3f(0.0f, 80.0f, 0.0f);
-		glVertex3f(5.0f, 75.0f, 0.0f);
-
-		glVertex3f(0.0f, 80.0f, 0.0f);
-		glVertex3f(-5.0f, 75.0f, 0.0f);
-	glEnd();
-
-	glBegin(GL_LINES); //b
-		glColor3f(0.0f, 0.0f, 1.0f);
-		glVertex3f(0.0f, 0.0f, 0.0f);
-		glVertex3f(0.0f, 0.0f, 80.0f);
-
-		glVertex3f(0.0f, 0.0f, 80.0f);
-		glVertex3f(5.0f, 0.0f, 75.0f);
-
-		glVertex3f(0.0f, 0.0f, 80.0f);
-		glVertex3f(-5.0f, 0.0f, 75.0f);
-	glEnd();
-
 
 	glPopMatrix();
+
 	glFlush();
 }
 

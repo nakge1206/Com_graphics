@@ -22,30 +22,19 @@ void RenderScene(void) {
 	
 
 	GLfloat x, y, z, angle;
-	bool isFirst = true;
 	GLfloat rectSize = 1.5f;
 	
 	GLfloat r, g, b;
-	r = 0.0f; g = 0.0f; b = 0.0f;
 
 	glBegin(GL_POINTS);
-		//glRectf(-10.0f, 10.0f, 10.0f, -10.0f);
 		z = -50.0f;
-		
 		for(angle = 0.0f; angle <= (2.0f * GL_PI) * 3.0f; angle += 0.1f){ //3바퀴 돌리는거
-			if(isFirst){
-				glColor3f(1.0f, 1.0f, 1.0f); 
-				isFirst = false;
-			} else glColor3f(1.0f, 0.0f, 0.0f);
 			x = 50.0f * cos(angle);
 			y = 50.0f * sin(angle);
 
-			// r = (sin(angle * 0.3f) + 1.0f) / 2.0f;
-			// g = (sin(angle * 0.5f + 1.0f) + 1.0f) / 2.0f;
-			// b = (sin(angle * 0.7f + 2.0f) + 1.0f) / 2.0f;
-			r = static_cast<float>(rand()) / RAND_MAX;
-			g = static_cast<float>(rand()) / RAND_MAX;
-			b = static_cast<float>(rand()) / RAND_MAX;
+			r = (rand()%100) / 99.0f; //%100은 해도되고, 안해도 되고
+			g = (rand()%100) / 99.0f;
+			b = (rand()%100) / 99.0f;
 			glColor3f(r, g, b);
 
 			for(GLfloat i = 0.00f; i <= rectSize; i+=0.01){
@@ -58,7 +47,12 @@ void RenderScene(void) {
 				glVertex3f(x+i, y-rectSize, z);
 				glVertex3f(x-i, y-rectSize, z);
 			}
-			//glRectf(x-3.0f, y+3.0f, x+3.0f, y-3.0f);
+			// for(float i= - rectSize; i <= rectSize; i+=0.2){
+			// 	glVertex3f(x+rectSize, y+i,z);
+			// 	glVertex3f(x-rectSize, y+i,z);
+			// 	glVertex3f(x+i, y+rectSize,z);
+			// 	glVertex3f(x+i, y-rectSize,z);
+			// }
 			z += 0.5f;
 		}
 	glEnd();
