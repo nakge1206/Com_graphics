@@ -7,11 +7,9 @@ Vertex예제. 점찍기
 
 void RenderScene(void) {
 	std::cout << "RenderScene" << std::endl;
-
 	glClear(GL_COLOR_BUFFER_BIT);
-
 	glColor3f(1.0f, 0.0f, 0.0f);
-	//glRectf(-25.0f, 25.0f, 25.0f, -25.0f);
+	
 	glBegin(GL_POINTS);
 		glVertex3f(0.0f, 0.0f, 0.0f);
 		glVertex3f(50.0f, 50.0f, 50.0f);
@@ -31,8 +29,7 @@ void ChangeSize(GLsizei w, GLsizei h){
 	glLoadIdentity();
 
 	GLint wSize = 100;
-	GLfloat aspectRatio;
-	aspectRatio = (GLfloat)w / (GLfloat)h;
+	GLfloat aspectRatio = (GLfloat)w / (GLfloat)h;
 	if(w<=h) glOrtho(-wSize, wSize, -wSize/aspectRatio, wSize/aspectRatio, 1, -50);
 	else glOrtho(-wSize*aspectRatio, wSize*aspectRatio, -wSize, wSize, 1, -50);
 	
@@ -48,6 +45,7 @@ void SetupRC(void) {
 int main(int argc, char** argv) {
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_SINGLE | GLUT_RGBA);
+
 	glutInitWindowSize(500, 500);
 	glutInitWindowPosition(400, 200);
 	glutCreateWindow("simple");

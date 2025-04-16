@@ -11,48 +11,47 @@ z축에 따라 원을 3번 그리는 예제
 
 void RenderScene(void) {
 	std::cout << "RenderScene" << std::endl;
-
 	glClear(GL_COLOR_BUFFER_BIT);
-
 	glColor3f(1.0f, 0.0f, 0.0f);
 	
 	glPushMatrix();
 	glRotatef(45, 1.0f, 0.0f, 0.0f);
 	glRotatef(45, 0.0f, 1.0f, 0.0f);
 	
-
 	GLfloat x, y, z, angle;
 	GLfloat rectSize = 1.5f;
-	
 	GLfloat r, g, b;
-
 	glBegin(GL_POINTS);
 		z = -50.0f;
 		for(angle = 0.0f; angle <= (2.0f * GL_PI) * 3.0f; angle += 0.1f){ //3바퀴 돌리는거
 			x = 50.0f * cos(angle);
 			y = 50.0f * sin(angle);
 
-			r = (rand()%100) / 99.0f; //%100은 해도되고, 안해도 되고
+			/*
+			rand()는 보통 0~32767가 나옴.
+			이걸 100으로 나눈 나머지니까 0~99임.
+			그걸 99.0으로 나누니까 0.0~1.0까지의 실수로 나옴.
+			*/
+			r = (rand()%100) / 99.0f;
 			g = (rand()%100) / 99.0f;
 			b = (rand()%100) / 99.0f;
 			glColor3f(r, g, b);
-
-			for(GLfloat i = 0.00f; i <= rectSize; i+=0.01){
-				glVertex3f(x+rectSize, y+i, z);
-				glVertex3f(x+rectSize, y-i, z);
-				glVertex3f(x-rectSize, y+i, z);
-				glVertex3f(x-rectSize, y-i, z);
-				glVertex3f(x+i, y+rectSize, z);
-				glVertex3f(x-i, y+rectSize, z);
-				glVertex3f(x+i, y-rectSize, z);
-				glVertex3f(x-i, y-rectSize, z);
-			}
-			// for(float i= - rectSize; i <= rectSize; i+=0.2){
-			// 	glVertex3f(x+rectSize, y+i,z);
-			// 	glVertex3f(x-rectSize, y+i,z);
-			// 	glVertex3f(x+i, y+rectSize,z);
-			// 	glVertex3f(x+i, y-rectSize,z);
+			// for(GLfloat i = 0.00f; i <= rectSize; i+=0.01){
+			// 	glVertex3f(x+rectSize, y+i, z);
+			// 	glVertex3f(x+rectSize, y-i, z);
+			// 	glVertex3f(x-rectSize, y+i, z);
+			// 	glVertex3f(x-rectSize, y-i, z);
+			// 	glVertex3f(x+i, y+rectSize, z);
+			// 	glVertex3f(x-i, y+rectSize, z);
+			// 	glVertex3f(x+i, y-rectSize, z);
+			// 	glVertex3f(x-i, y-rectSize, z);
 			// }
+			for(GLfloat i = -rectSize; i <= rectSize; i+=0.01){
+				glVertex3f(x+rectSize, y+i, z);
+				glVertex3f(x-rectSize, y+i, z);
+				glVertex3f(x+i, y+rectSize, z);
+				glVertex3f(x+i, y-rectSize, z);
+			}
 			z += 0.5f;
 		}
 	glEnd();
@@ -90,6 +89,7 @@ void SetupRC(void) {
 int main(int argc, char** argv) {
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_SINGLE | GLUT_RGBA);
+
 	glutInitWindowSize(500, 500);
 	glutInitWindowPosition(400, 200);
 	glutCreateWindow("simple");

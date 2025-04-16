@@ -15,25 +15,24 @@ fixed - glutInitWindowSize(640, 480)
 
 void RenderScene(void) {
 	std::cout << "RenderScene" << std::endl;
-
 	glClear(GL_COLOR_BUFFER_BIT);
-
 
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
 
 	glViewport(0, 0, 640, 480);
-
-	//glOrtho(1, -1, 1, -1, 1, -1); //이건 보이기는 역전으로 보이지만, 일부만 보이므로 이렇게 하면 안됨.
 	glOrtho(0, 640, 0, 480, 0, -1);
+	/*
+	보통 Ortho의 기본값은 glOrtho(-1, 1, -1, 1, 1, -1); 이렇게 되어있음.
+	근데 지금 Window랑 ViewPort는 640*480 임. 그래서 그냥 도형이 짤려서 보이는거라
+	glOrtho(1, -1, 1, -1, 1, -1); 이렇게 해도 맞게 한 것 처럼 보이긴하나, 눈속임에 불과함.
+	*/
 
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
 
 	glColor3f(1.0f, 0.0f, 0.0f);
-
 	glRectf(0, 240, 320, 0);
-
 
 	glFlush();
 }
@@ -46,10 +45,13 @@ void SetupRC(void) {
 int main(int argc, char** argv) {
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_SINGLE | GLUT_RGBA);
+
 	glutInitWindowSize(640, 480);
 	glutInitWindowPosition(1500, 250);
 	glutCreateWindow("simple");
+
 	SetupRC();
 	glutDisplayFunc(RenderScene);
+
 	glutMainLoop();
 }

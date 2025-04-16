@@ -11,9 +11,7 @@ z축에 따라 원을 3번 그리는 예제
 
 void RenderScene(void) {
 	std::cout << "RenderScene" << std::endl;
-
 	glClear(GL_COLOR_BUFFER_BIT);
-
 	glColor3f(1.0f, 0.0f, 0.0f);
 	
 	glPushMatrix();
@@ -21,12 +19,10 @@ void RenderScene(void) {
 	glRotatef(45, 0.0f, 1.0f, 0.0f);
 	
 
-	GLfloat x, y, z, angle;
-	bool isFirst = true;
-	
+	GLfloat x, y, z, angle;	
 	GLfloat sizes[2];
 	GLfloat step;
-	glGetFloatv(GL_POINT_SIZE_RANGE, sizes);
+	//glGetFloatv(GL_POINT_SIZE_RANGE, sizes);
 	// GLfloat curSize = sizes[0];
 	GLfloat curSize = 0.0f;
 	// glGetFloatv(GL_POINT_SIZE_GRANULARITY, &step);
@@ -77,6 +73,7 @@ void SetupRC(void) {
 int main(int argc, char** argv) {
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_SINGLE | GLUT_RGBA);
+	
 	glutInitWindowSize(500, 500);
 	glutInitWindowPosition(400, 200);
 	glutCreateWindow("simple");

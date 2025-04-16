@@ -10,24 +10,49 @@ void RenderScene(void) {
 	std::cout << "RenderScene" << std::endl;
 
 	glClear(GL_COLOR_BUFFER_BIT);
-	glColor3f(1.0f, 0.0f, 0.0f);
 
-	GLfloat y;
-	GLint factor = 1;
-	GLushort pattern = 0x00ff;
+	glPushMatrix();
+	glRotatef(45, 1.0f, 0.0f, 0.0f);
+	glRotatef(45, 0.0f, 1.0f, 0.0f);
 
-	glEnable(GL_LINE_STIPPLE);
-	for(y = -90.0f; y<=90.0f; y+=20.0f){
-		glLineStipple(factor, pattern);
+	glBegin(GL_LINES); //r
+		glColor3f(1.0f, 0.0f, 0.0f);
+		glVertex3f(0.0f, 0.0f, 0.0f);
+		glVertex3f(80.0f, 0.0f, 0.0f);
 
-		glBegin(GL_LINES);
-			glVertex2f(-80.0f, y);
-			glVertex2f(80.0f, y);
-		glEnd();
+		glVertex3f(80.0f, 0.0f, 0.0f);
+		glVertex3f(75.0f, 5.0f, 0.0f);
 
-		factor++;
-	}
-	
+		glVertex3f(80.0f, 0.0f, 0.0f);
+		glVertex3f(75.0f, -5.0f, 0.0f);
+	glEnd();
+
+	glBegin(GL_LINES); //g
+		glColor3f(0.0f, 1.0f, 0.0f);
+		glVertex3f(0.0f, 0.0f, 0.0f);
+		glVertex3f(0.0f, 80.0f, 0.0f);
+
+		glVertex3f(0.0f, 80.0f, 0.0f);
+		glVertex3f(5.0f, 75.0f, 0.0f);
+
+		glVertex3f(0.0f, 80.0f, 0.0f);
+		glVertex3f(-5.0f, 75.0f, 0.0f);
+	glEnd();
+
+	glBegin(GL_LINES); //b
+		glColor3f(0.0f, 0.0f, 1.0f);
+		glVertex3f(0.0f, 0.0f, 0.0f);
+		glVertex3f(0.0f, 0.0f, 80.0f);
+
+		glVertex3f(0.0f, 0.0f, 80.0f);
+		glVertex3f(5.0f, 0.0f, 75.0f);
+
+		glVertex3f(0.0f, 0.0f, 80.0f);
+		glVertex3f(-5.0f, 0.0f, 75.0f);
+	glEnd();
+
+
+	glPopMatrix();
 	glFlush();
 }
 

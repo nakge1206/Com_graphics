@@ -6,19 +6,15 @@
 #include <stdio.h>
 #include <iostream>
 
-//장면 렌더링
 void RenderScence(void){
     std::cout << "RenderScene" << std::endl;
-
-    //현재 색상을 사용하여 화면을 지운다.
     glClear(GL_COLOR_BUFFER_BIT);
-
-    //드로잉 명령을 전달한다.
     glFlush();
 }
 
 void SetupRC(void){
     std::cout << "SetupRC" << std::endl;
+    //여기 있는 RGBA를 조정하면 설정한 색상으로 창이 초기화됨.
     glClearColor(0.0f, 0.0f, 1.0f, 1.0f);
 }
 

@@ -13,25 +13,23 @@ fixed - glutInitWindowSize(500, 500)
 
 void RenderScene(void) {
 	std::cout << "RenderScene" << std::endl;
-
 	glClear(GL_COLOR_BUFFER_BIT);
 
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
 
 	glViewport(0, 0, 500, 500);
-
     glOrtho(0, 500, 0, 500, 1, -1);
     
-	
-
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
 
 	glColor3f(1.0f, 0.0f, 0.0f);
-
-    //500 -> 250 -> 125
 	glRectf(250, 375, 375, 250);
+	/*
+	Ortho가 (0,500,0,500) 이니까 정 가운데는 (250,250)임
+	500의 1/4는 125 => (250, 375), (375,250)
+	*/
 
 
 	glFlush();
@@ -45,10 +43,13 @@ void SetupRC(void) {
 int main(int argc, char** argv) {
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_SINGLE | GLUT_RGBA);
+
 	glutInitWindowSize(500, 500);
 	glutInitWindowPosition(1500, 250);
 	glutCreateWindow("simple");
+
 	SetupRC();
 	glutDisplayFunc(RenderScene);
+
 	glutMainLoop();
 }                                 

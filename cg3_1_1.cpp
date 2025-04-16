@@ -8,9 +8,7 @@
 
 void RenderScene(void) {
 	std::cout << "RenderScene" << std::endl;
-
 	glClear(GL_COLOR_BUFFER_BIT);
-
 	glColor3f(1.0f, 0.0f, 0.0f);
 	
 	glPointSize(2.0f); //begin 밖에서 써야함. 안에서 쓰면 적용 안됨
@@ -58,6 +56,7 @@ void SetupRC(void) {
 int main(int argc, char** argv) {
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_SINGLE | GLUT_RGBA);
+
 	glutInitWindowSize(500, 500);
 	glutInitWindowPosition(400, 200);
 	glutCreateWindow("simple");

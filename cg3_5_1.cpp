@@ -8,14 +8,12 @@
 
 void RenderScene(void) {
 	std::cout << "RenderScene" << std::endl;
-
 	glClear(GL_COLOR_BUFFER_BIT);
 	glColor3f(1.0f, 0.0f, 0.0f);
 
 	GLfloat y;
 	GLint factor = 1;
 	GLushort pattern = 0x00ff;
-
 	glEnable(GL_LINE_STIPPLE);
 	for(y = -90.0f; y<=90.0f; y+=20.0f){
 		glLineStipple(factor, pattern);
@@ -59,6 +57,7 @@ void SetupRC(void) {
 int main(int argc, char** argv) {
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_SINGLE | GLUT_RGBA);
+	
 	glutInitWindowSize(500, 500);
 	glutInitWindowPosition(400, 200);
 	glutCreateWindow("simple");
