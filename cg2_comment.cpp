@@ -13,7 +13,7 @@ void RenderScene(void) {
 	//현재 색상을 사용해 화면을 지운다
 	glClear(GL_COLOR_BUFFER_BIT);
 
-	//default좌표계 = ModeView = object 좌표계
+	//default좌표계 = ModelView = object 좌표계
 	//projection 좌표계로 이동(카메라 좌표계)
 	glMatrixMode(GL_PROJECTION);
 	//좌표계 초기화

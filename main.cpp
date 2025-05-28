@@ -47,7 +47,6 @@ void RenderScene(void) {
 		glVertex3f(-5.0f, 0.0f, 75.0f);
 	glEnd();
 
-
 	glPopMatrix();
 	glFlush();
 }

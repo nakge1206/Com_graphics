@@ -15,20 +15,20 @@ void RenderScene(void) {
 	glRotatef(45, 1.0f, 0.0f, 0.0f);
 	glRotatef(45, 0.0f, 1.0f, 0.0f);
 
+
+
 	glBegin(GL_LINES); //r
-		glColor3f(1.0f, 0.0f, 0.0f);
+		glColor3f(1.0f, 0.0f, 0.0f); //r
 		glVertex3f(0.0f, 0.0f, 0.0f);
-		glVertex3f(80.0f, 0.0f, 0.0f);
+		glVertex3f(50.0f, 0.0f, 0.0f);
 
 		glVertex3f(80.0f, 0.0f, 0.0f);
 		glVertex3f(75.0f, 5.0f, 0.0f);
 
 		glVertex3f(80.0f, 0.0f, 0.0f);
 		glVertex3f(75.0f, -5.0f, 0.0f);
-	glEnd();
 
-	glBegin(GL_LINES); //g
-		glColor3f(0.0f, 1.0f, 0.0f);
+		glColor3f(0.0f, 1.0f, 0.0f); //g
 		glVertex3f(0.0f, 0.0f, 0.0f);
 		glVertex3f(0.0f, 80.0f, 0.0f);
 
@@ -37,10 +37,8 @@ void RenderScene(void) {
 
 		glVertex3f(0.0f, 80.0f, 0.0f);
 		glVertex3f(-5.0f, 75.0f, 0.0f);
-	glEnd();
 
-	glBegin(GL_LINES); //b
-		glColor3f(0.0f, 0.0f, 1.0f);
+		glColor3f(0.0f, 0.0f, 1.0f); //b
 		glVertex3f(0.0f, 0.0f, 0.0f);
 		glVertex3f(0.0f, 0.0f, 80.0f);
 

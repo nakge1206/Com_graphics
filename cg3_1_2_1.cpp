@@ -18,19 +18,37 @@ void RenderScene(void) {
 	glRotatef(45, 1.0f, 0.0f, 0.0f);
 	glRotatef(45, 0.0f, 1.0f, 0.0f);
 	
-	GLfloat x, y, z, angle;
+	// GLfloat x, y, z, angle;
+	// bool isFirst = true;
+	// glBegin(GL_POINTS);
+	// 	z = -50.0f;
+	// 	for(angle = 0.0f; angle <= (2.0f * GL_PI) * 3.0f; angle += 0.1f){ //3바퀴 돌리는거
+	// 		if(isFirst){ //맨 처음 점이라면 흰색점으로 표시
+	// 			glColor3f(1.0f, 1.0f, 1.0f); 
+	// 			isFirst = false;
+	// 		} else glColor3f(1.0f, 0.0f, 0.0f);
+	// 		x = 50.0f * cos(angle);
+	// 		y = 50.0f * sin(angle);
+	// 		glVertex3f(x, y, z);
+	// 		z += 0.5f;
+	// 	}
+	// glEnd();
+
+	GLfloat x, y, z, degree;
 	bool isFirst = true;
 	glBegin(GL_POINTS);
 		z = -50.0f;
-		for(angle = 0.0f; angle <= (2.0f * GL_PI) * 3.0f; angle += 0.1f){ //3바퀴 돌리는거
+		for(degree = 0.0f; degree <= 360*3.0f; degree += 2.0f){ //3바퀴 돌리는거
 			if(isFirst){ //맨 처음 점이라면 흰색점으로 표시
 				glColor3f(1.0f, 1.0f, 1.0f); 
 				isFirst = false;
 			} else glColor3f(1.0f, 0.0f, 0.0f);
+			GLfloat angle = degree * (GL_PI / 180);
+			std::cout << "degree : " << degree << ", angle : " << angle << std::endl;
 			x = 50.0f * cos(angle);
 			y = 50.0f * sin(angle);
 			glVertex3f(x, y, z);
-			z += 0.5f;
+			z += 0.2f;
 		}
 	glEnd();
 
@@ -52,8 +70,8 @@ void ChangeSize(GLsizei w, GLsizei h){
 	GLint wSize = 100;
 	GLfloat aspectRatio;
 	aspectRatio = (GLfloat)w / (GLfloat)h;
-	if(w<=h) glOrtho(-wSize, wSize, -wSize/aspectRatio, wSize/aspectRatio, -100, 100);
-	else glOrtho(-wSize*aspectRatio, wSize*aspectRatio, -wSize, wSize, -100, 100);
+	if(w<=h) glOrtho(-wSize, wSize, -wSize/aspectRatio, wSize/aspectRatio, 100000, -100000);
+	else glOrtho(-wSize*aspectRatio, wSize*aspectRatio, -wSize, wSize, 100000, -100000);
 	
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();

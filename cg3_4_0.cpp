@@ -18,7 +18,11 @@ void RenderScene(void) {
 	glRotatef(45, 0.0f, 1.0f, 0.0f);
 	
 	GLfloat x, y, z, angle;
-	glBegin(GL_LINE_STRIP);
+	// glEnable(GL_LINE_STIPPLE);
+	// GLint factor = 5;
+	// GLushort pattern = 0x5555;
+	// glLineStipple(factor, pattern);
+	glBegin(GL_LINES);
 		z = -50.0f;
 		for(angle = 0.0f; angle <= (2.0f * GL_PI) * 3.0f; angle += 0.1f){ //3바퀴 돌리는거
 			x = 50.0f * cos(angle);

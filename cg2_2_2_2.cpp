@@ -23,7 +23,9 @@ void RenderScene(void) {
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
 
-	glViewport(0, 0, 250, 500);	
+	// glViewport(0, 0, 250, 500);	
+	glViewport(250, 0, 250, 250);	
+	//glViewport(0, 0, 500, 500);	
 	/*
 	도화지의 크기를 압축시키면 됨. width를 반토막시키면 됨.
 	기존(0, 0, 500, 500)이 (0,0)에서 (500, 500)만큼의 도화지를 쓰는데, 그걸 반토막내서 압축한거임.

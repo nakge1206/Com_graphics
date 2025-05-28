@@ -22,11 +22,12 @@ void RenderScene(void) {
 	GLfloat x, y, z, angle;	
 	GLfloat sizes[2];
 	GLfloat step;
-	//glGetFloatv(GL_POINT_SIZE_RANGE, sizes);
-	// GLfloat curSize = sizes[0];
-	GLfloat curSize = 0.0f;
-	// glGetFloatv(GL_POINT_SIZE_GRANULARITY, &step);
-	step = 0.1f;
+	glGetFloatv(GL_POINT_SIZE_RANGE, sizes);
+	GLfloat curSize = sizes[0];
+	//GLfloat curSize = 0.0f;
+	glGetFloatv(GL_POINT_SIZE_GRANULARITY, &step);
+	//시승템에서 지원하는.
+	//step = 0.1f;
 
 	z = -50.0f;
 	for(angle = 0.0f; angle <= (2.0f * GL_PI) * 3.0f; angle += 0.1f){ //3바퀴 돌리는거

@@ -13,7 +13,8 @@ void RenderScene(void) {
 
 	GLfloat y;
 	GLint factor = 1;
-	GLushort pattern = 0x5555;
+	GLushort pattern = 0x00ff;
+	//0000 0000 0101 0101
 	glEnable(GL_LINE_STIPPLE);
 	for(y = -90.0f; y<=90.0f; y+=20.0f){
 		glLineStipple(factor, pattern);

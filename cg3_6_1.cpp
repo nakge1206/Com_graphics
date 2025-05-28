@@ -1,33 +1,36 @@
 /*
-3_5_1 에서 점선을 길게 긋는
+폴리곤 그리기 1
 */
 
 #include <GL/glut.h>
 #include <stdio.h>
 #include <iostream>
 
+
+
 void RenderScene(void) {
 	std::cout << "RenderScene" << std::endl;
+
 	glClear(GL_COLOR_BUFFER_BIT);
-	glColor3f(1.0f, 0.0f, 0.0f);
 
-	GLfloat y;
-	GLint factor = 1;
-	GLushort pattern = 0x00ff;
-	// 0000 0000 1111 1111
-	// 1111111100000000
-	glEnable(GL_LINE_STIPPLE);
-	for(y = -90.0f; y<=90.0f; y+=20.0f){
-		glLineStipple(factor, pattern);
+	// glPushMatrix();
+	// glRotatef(45, 1.0f, 0.0f, 0.0f);
+	// glRotatef(45, 0.0f, 1.0f, 0.0f);
 
-		glBegin(GL_LINES);
-			glVertex2f(-80.0f, y);
-			glVertex2f(80.0f, y);
-		glEnd();
+	glBegin(GL_TRIANGLE_STRIP); //r
+		glColor3f(1.0f, 0.0f, 0.0f);
 
-		factor++;
-	}
-	
+		glVertex2f(0.0f, 0.0f);
+		glVertex2f(25.0f, 25.0f);
+		glVertex2f(50.0f, 0.0f);
+		glVertex2f(0.0f, 50.0f);
+		glVertex2f(50.0f, 100.0f);
+		
+
+		
+	glEnd();
+
+	// glPopMatrix();
 	glFlush();
 }
 
@@ -44,8 +47,8 @@ void ChangeSize(GLsizei w, GLsizei h){
 	GLint wSize = 100;
 	GLfloat aspectRatio;
 	aspectRatio = (GLfloat)w / (GLfloat)h;
-	if(w<=h) glOrtho(-wSize, wSize, -wSize/aspectRatio, wSize/aspectRatio, -100, 100);
-	else glOrtho(-wSize*aspectRatio, wSize*aspectRatio, -wSize, wSize, -100, 100);
+	if(w<=h) glOrtho(-wSize, wSize, -wSize/aspectRatio, wSize/aspectRatio, -500, 500);
+	else glOrtho(-wSize*aspectRatio, wSize*aspectRatio, -wSize, wSize, -500, 500);
 	
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
@@ -54,12 +57,13 @@ void ChangeSize(GLsizei w, GLsizei h){
 void SetupRC(void) {
 	std::cout << "SetupRC" << std::endl;
 	glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+	// glShadeModel(GL_FLAT);
+	glShadeModel(GL_SMOOTH);
 }
 
 int main(int argc, char** argv) {
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_SINGLE | GLUT_RGBA);
-	
 	glutInitWindowSize(500, 500);
 	glutInitWindowPosition(400, 200);
 	glutCreateWindow("simple");

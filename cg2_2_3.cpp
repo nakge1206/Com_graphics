@@ -20,19 +20,20 @@ void ChangeSize(GLsizei w, GLsizei h){
 	std::cout << "w = " << w << " " << "h = " << h << std::endl;
 	std::cout << "ChangeSize" << std::endl;
 
-	if(h==0) h = 1;
-	glViewport(0, 0, w, h);
-
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
 
+	if(h==0) h = 1;
+	glViewport(0, 0, w, h);
+
 	//논리적 크기는 100x100(픽셀) 이라고 정해두는 거임.
 	GLint wSize = 100;
+	// GLint hSize = 200;
 	GLfloat aspectRatio;
 	aspectRatio = (GLfloat)w / (GLfloat)h;
 	if(w<=h) glOrtho(-wSize, wSize, -wSize/aspectRatio, wSize/aspectRatio, 1, -1);
 	else glOrtho(-wSize*aspectRatio, wSize*aspectRatio, -wSize, wSize, 1, -1);
-	
+
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
 }

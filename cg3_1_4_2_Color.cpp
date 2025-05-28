@@ -4,7 +4,7 @@ z축에 따라 원을 3번 그리는 예제
 */
 
 #include <GL/glut.h>
-#include <stdio.h>
+// #include <stdio.h>
 #include <iostream>
 
 #define GL_PI 3.1415f
