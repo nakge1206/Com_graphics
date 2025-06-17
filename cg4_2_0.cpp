@@ -2,7 +2,7 @@
 glWireCube(10.0f)
 원점을 중심으로 하여 10크기만듬 변 길이를 가지는 육면체 생성
 
-현재 wsize는 50임
+y축 10이동, 45도 꺽은
 */
 
 #include <GL/glut.h>
@@ -20,7 +20,7 @@ void RenderScene(void)
    glRotatef(30.0f, 1.0f, 0.0f, 0.0f); //x축으로 30도 회전
    glRotatef(-30.0f, 0.0f, 1.0f, 0.0f); //y축으로 -30도 회정
    
-
+   //x, y, z 축 표시
    GLfloat x, y, angle;
    glBegin(GL_LINES);
 		glColor3f(1.0f, 0.0f, 0.0f); //r
@@ -36,6 +36,7 @@ void RenderScene(void)
 		glVertex3f(0.0f, 0.0f, 30.0f);
 	glEnd();
 
+   //정육면체 그리기
    glEnable(GL_LINE_STIPPLE);
 	glLineStipple(1, 0x00ff);
    glColor3f(0.0f, 0.0f, 1.0f);

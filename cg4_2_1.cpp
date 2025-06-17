@@ -1,8 +1,13 @@
 /*
-glWireCube(10.0f)
-원점을 중심으로 하여 10크기만듬 변 길이를 가지는 육면체 생성
+glutSolidSphere(double radius, int slices, int stacks)
+반지름, 구의 세로방향 분할 수(경도), 구의 가로방향 분할 수(위도)
 
-현재 wsize는 50임
+구2개
+glutSolidSphere(1,30,30)와 동일한 좌표2개이용
+glTranslatef() 2번이용
+
+이런 행렬관련은 스택으로 관리됨 
+최대로 사용가능한 스택 수는 시스템마다 다르니 참고해야함
 */
 
 #include <GL/glut.h>
@@ -15,13 +20,9 @@ void RenderScene(void)
    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
    
    glLoadIdentity();
-   // glPushMatrix();
-   glTranslatef(0.0f, 0.0f, -30.0f); //뒤로 조금 이동
-   glRotatef(30.0f, 1.0f, 0.0f, 0.0f); //x축으로 30도 회전
-   glRotatef(-30.0f, 0.0f, 1.0f, 0.0f); //y축으로 -30도 회정
    
-
-   GLfloat x, y, angle;
+   //x,y,z 축 표시
+   GLfloat x, y;
    glBegin(GL_LINES);
 		glColor3f(1.0f, 0.0f, 0.0f); //r
 		glVertex3f(0.0f, 0.0f, 0.0f);
@@ -36,17 +37,19 @@ void RenderScene(void)
 		glVertex3f(0.0f, 0.0f, 30.0f);
 	glEnd();
 
-   glEnable(GL_LINE_STIPPLE);
-	glLineStipple(1, 0x00ff);
-   glColor3f(0.0f, 0.0f, 1.0f);
-   glutWireCube(10.0f);
-   glDisable(GL_LINE_STIPPLE);
+   //구 그리기
+   glTranslatef(0.0f, 10.0f, 0.0f);
+   glutSolidSphere(1, 30, 30);
+   glTranslatef(10.0f, -10.0f, 0.0f);
+   glutSolidSphere(1, 30, 30);
 
-   glTranslatef(0.0f, 20.0f, 0.0f);
-   glColor3f(1.0f, 0.0f, 0.0f);
-   glutWireCube(10.0f);
+   //위 방법은 계산하기 쉬워서 해도 되는데, 애매할때는 초기화 시켜서 하는 것도 방법
+   // glTranslatef(0.0f, 10.0f, 0.0f);
+   // glutSolidSphere(1, 30, 30);
+   // glLoadIdentity();
+   // glTranslatef(10.0f, 0.0f, 0.0f);
+   // glutSolidSphere(1, 30, 30);
 
-   // glPopMatrix();
    glutSwapBuffers();
 }
 

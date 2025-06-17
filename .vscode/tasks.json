@@ -6,13 +6,14 @@
             "label": "C/C++: build active file",
             "command": "/usr/bin/g++",
             "args": [
-                //"-g",
+                "-g",
                 "${file}",
                 "-o",
                 "${fileDirname}/${fileBasenameNoExtension}.out",
                 "-I/opt/homebrew/include",
                 "-L/opt/homebrew/lib",
                 "-lglut",
+                "-lGLU",
                 "-lGL"
             ],
             "options": {
